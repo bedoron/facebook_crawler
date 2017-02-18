@@ -1,0 +1,6 @@
+var FacebookCrawler = (function() {
+
+    return {
+        
+    }
+}())
