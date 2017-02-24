@@ -1,0 +1,9 @@
+{
+  "name": "facebook-crawler",
+  "version": "0.0.1",
+  "author": "doron",
+  "dependencies": {
+    "chromedriver": "x.x.x",
+    "selenium-webdriver": "x.x.x"
+  }
+}

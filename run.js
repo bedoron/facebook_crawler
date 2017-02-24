@@ -1,5 +1,5 @@
-fs = require('fs')
-path = require('path')
+fs = require('fs');
+path = require('path');
 
 var Runner = (function() {
     var configuration = null;
@@ -38,7 +38,7 @@ var Runner = (function() {
     }
 
     var setupTerminationHandler = function() {
-        process.stdin.resume()
+        process.stdin.resume();
 
         process.on('exit', terminationHandler.bind(null, {cleanup: true})) // App is closing
         process.on('SIGINT', terminationHandler.bind(null, {exit: true})) // CTRL+C
@@ -50,13 +50,13 @@ var Runner = (function() {
         console.log("Registering termination methods");
         setupTerminationHandler();
         
-        var configuration_data = fs.readFileSync(path.resolve(__dirname, 'config.json'), 'utf8')
+        var configuration_data = fs.readFileSync(path.resolve(__dirname, 'config.json'), 'utf8');
         
-        console.log("Parsing configuration file")
-        configuration = JSON.parse(configuration_data)
-        
-        driver = getDriver()
-        driver.get("Https://google.com")
+        console.log("Parsing configuration file");
+        configuration = JSON.parse(configuration_data);
+
+        require('./facebook-crawler.js')();
+        crawl(getDriver(), configuration);
     }
 
     return {
